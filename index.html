@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="A gamified JEE preparation tracker with levels, tasks, milestones and progress insights.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>JEE QUEST</title>
+<style>
+:root{--bg:#0b1020;--panel:#121b2e;--panel2:#18243a;--line:#293752;--text:#f3f6ff;--muted:#a9b6cd;--lime:#b7f36b;--blue:#82b7ff;--pink:#ff9ac2;--gold:#ffd166}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#1a2c4c 0,#0b1020 38rem);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 14px;font-weight:750;background:var(--lime);color:#14200c}button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}button.small{padding:7px 10px;font-size:12px}.wrap{max-width:1050px;margin:auto;padding:18px 15px 45px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand{font-size:12px;letter-spacing:2px;color:var(--lime);font-weight:900}.tag{color:var(--muted);font-size:12px}.hero{background:linear-gradient(135deg,#172640,#111a2d);border:1px solid var(--line);border-radius:24px;padding:22px;margin-bottom:14px}.herohead{display:flex;justify-content:space-between;align-items:flex-start;gap:15px}.level{font-size:12px;color:var(--lime);font-weight:900;letter-spacing:1.2px}.hero h1{font-size:clamp(26px,5vw,42px);line-height:1.05;margin:7px 0}.hero p{color:var(--muted);margin:8px 0}.xp{font-size:25px;font-weight:900;white-space:nowrap}.bar{height:9px;background:#28354b;border-radius:99px;overflow:hidden;margin:14px 0 6px}.bar span{height:100%;display:block;background:linear-gradient(90deg,var(--lime),#70e0c1);width:0;transition:width .25s}.subrow{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;gap:8px}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}.card{background:rgba(18,27,46,.94);border:1px solid var(--line);border-radius:20px;padding:17px;min-width:0}.span8{grid-column:span 8}.span4{grid-column:span 4}.span6{grid-column:span 6}.span12{grid-column:span 12}.card h2{font-size:17px;margin:0 0 5px}.hint{font-size:12px;color:var(--muted);margin:0 0 14px}.task{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid #253149}.task:last-child{border:0}.task input{accent-color:var(--lime);width:19px;height:19px;margin-top:2px;flex-shrink:0}.task label{flex:1}.task strong{display:block;font-size:14px}.task small{color:var(--muted);display:block;margin-top:3px}.points{color:var(--lime);font-size:12px;font-weight:900;white-space:nowrap}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.stat{background:#0e1728;border:1px solid var(--line);border-radius:14px;padding:12px}.stat b{font-size:21px;display:block}.stat small{color:var(--muted);font-size:11px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row input,.row select{min-width:0;flex:1;background:#0b1425;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:11px}.subject-tabs{display:flex;gap:7px;margin:12px 0;flex-wrap:wrap}.tab{background:#0b1425;color:var(--muted);border:1px solid var(--line);padding:8px 12px;border-radius:10px}.tab.active{background:var(--lime);color:#14200c;border-color:var(--lime)}.chapter-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.chapter{display:flex;gap:8px;align-items:flex-start;background:#0d1627;border:1px solid #253149;padding:10px;border-radius:12px;font-size:13px}.chapter input{accent-color:var(--lime);margin-top:3px}.chapter.done{opacity:.62}.chapter.done span{text-decoration:line-through}.milestone{display:flex;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid #253149}.milestone:last-child{border:0}.medal{width:38px;height:38px;display:grid;place-items:center;background:#24314a;border-radius:12px;font-size:19px;flex-shrink:0}.milestone small{display:block;color:var(--muted)}.status{margin-left:auto;font-size:11px;color:var(--gold);white-space:nowrap}.friend{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #253149}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#263652;font-weight:900}.friend .name{flex:1}.friend small{display:block;color:var(--muted)}.friend b{font-size:13px}.insight{background:#0d1627;border-radius:13px;padding:12px;margin:9px 0;color:#dfe8fa}.insight strong{color:var(--lime)}.notice{font-size:11px;color:var(--muted);margin-top:12px;line-height:1.5}.empty{color:var(--muted);font-size:13px;padding:8px 0}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--lime);color:#14200c;padding:12px 18px;border-radius:12px;font-weight:850;display:none;box-shadow:0 8px 30px #0008;z-index:10}.footer{text-align:center;color:var(--muted);font-size:11px;margin:20px 0}.danger{color:#ffb0b0}.hidden{display:none!important}
+@media(max-width:700px){.span8,.span4,.span6{grid-column:span 12}.hero{padding:17px}.chapter-list{grid-template-columns:1fr}.xp{font-size:21px}.wrap{padding:13px 11px 35px}.stats{gap:6px}.stat{padding:9px}.stat b{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><div><div class="brand">⚡ JEE QUEST</div><div class="tag">Your preparation. Your progress. Your game.</div></div><button id="installBtn" class="secondary small hidden">＋ Add to Home Screen</button></header>
+  <section class="hero">
+    <div class="herohead"><div><div class="level" id="levelName">LEVEL 1 · ROOKIE</div><h1 id="greeting">Build your streak.</h1><p id="heroLine">Small wins today. Stronger preparation tomorrow.</p></div><div class="xp"><span id="xpTotal">0</span><div class="tag">TOTAL XP</div></div></div>
+    <div class="bar"><span id="levelBar"></span></div><div class="subrow"><span id="xpProgress">0 / 250 XP to next level</span><span id="streakLabel">🔥 0-day streak</span></div>
+    <div class="stats"><div class="stat"><b id="doneCount">0</b><small>Tasks done today</small></div><div class="stat"><b id="chapterCount">0%</b><small>Syllabus checked off</small></div><div class="stat"><b id="minutesCount">0</b><small>Study minutes today</small></div></div>
+  </section>
+  <div class="grid">
+    <section class="card span8"><h2>🎯 Today's missions</h2><p class="hint" id="dateLabel">Your daily plan</p><div id="tasks"></div><div class="row" style="margin-top:12px"><button id="refreshTasks" class="secondary small">↻ Refresh plan</button><button id="resetToday" class="secondary small">Reset today's checks</button></div><p class="notice">Tasks adapt to the information you enter. Check a task only after completing it; XP is meant to reflect real work, not optimistic checkbox engineering.</p></section>
+    <section class="card span4"><h2>🏆 Milestone rewards</h2><p class="hint">Unlock rewards as you make progress.</p><div id="milestones"></div><p class="notice">Pick a small, healthy reward you can actually enjoy. The app tracks milestones; it cannot deliver physical prizes.</p></section>
+    <section class="card span8"><h2>📚 Chapter tracker</h2><p class="hint">Tick a chapter when you've studied it and solved practice questions.</p><div class="subject-tabs"><button class="tab active" data-sub="Physics">Physics</button><button class="tab" data-sub="Chemistry">Chemistry</button><button class="tab" data-sub="Maths">Maths</button></div><div id="chapters" class="chapter-list"></div><div class="row" style="margin-top:12px"><select id="newSubject" aria-label="Subject"><option>Physics</option><option>Chemistry</option><option>Maths</option></select><input id="newChapter" placeholder="Add your own chapter"><button id="addChapter">Add</button></div></section>
+    <section class="card span4"><h2>📈 Improvement report</h2><p class="hint">Use real practice-test results for useful feedback.</p><div class="row"><input id="mockName" placeholder="Test name (e.g. Mock 1)"><input id="mockScore" type="number" min="0" max="300" placeholder="Score / 300"></div><button id="addMock" style="width:100%;margin-top:8px">Save mock result</button><div id="insights" style="margin-top:12px"></div><div id="mockHistory"></div><p class="notice">Insights are based on the scores and study data you enter. This is not a prediction of your JEE rank or admission.</p></section>
+    <section class="card span6"><h2>👥 Friend leaderboard</h2><p class="hint">Add friends to compare XP on this device.</p><div class="row"><input id="friendName" placeholder="Friend's nickname"><input id="friendXP" type="number" min="0" placeholder="Their XP" style="max-width:100px"><button id="addFriend">Add</button></div><div id="leaderboard" style="margin-top:10px"></div><p class="notice">This starter version stores friend entries on your device only. Live competition between different phones requires online accounts and a shared database.</p></section>
+    <section class="card span6"><h2>⏱ Study log</h2><p class="hint">Record focused time; breaks don't count as study minutes.</p><div class="row"><input id="minutesInput" type="number" min="1" max="1000" placeholder="Focused minutes"><select id="studySubject"><option>Physics</option><option>Chemistry</option><option>Maths</option><option>Revision</option></select><button id="logMinutes">Log time</button></div><div id="studyHistory" style="margin-top:10px"></div><button id="exportBtn" class="secondary small" style="margin-top:8px">Export backup (JSON)</button><label class="secondary small" style="display:inline-block;border-radius:12px;padding:8px 10px;cursor:pointer;margin-top:8px">Import backup<input type="file" id="importFile" accept=".json,application/json" class="hidden"></label><button id="wipeBtn" class="secondary small danger" style="margin-top:8px">Reset all data</button></section>
+  </div>
+  <div class="footer">JEE QUEST · Version 1 · Your data stays in this browser unless you export it.</div>
+</div><div id="toast" class="toast"></div>
+<script>
+const DEFAULTS={
+ Physics:["Electric Charges and Fields","Electrostatic Potential and Capacitance","Current Electricity","Moving Charges and Magnetism","Magnetism and Matter","Electromagnetic Induction","Alternating Current","Electromagnetic Waves","Ray Optics","Wave Optics","Dual Nature of Radiation","Atoms","Nuclei","Semiconductor Electronics","Units and Measurements","Motion in a Straight Line","Motion in a Plane","Laws of Motion","Work, Energy and Power","Rotational Motion","Gravitation","Thermodynamics","Kinetic Theory","Oscillations","Waves"],
+ Chemistry:["Some Basic Concepts of Chemistry","Structure of Atom","Classification and Periodicity","Chemical Bonding","Thermodynamics","Equilibrium","Redox Reactions","Solutions","Electrochemistry","Chemical Kinetics","d- and f-Block Elements","Coordination Compounds","Haloalkanes and Haloarenes","Alcohols, Phenols and Ethers","Aldehydes, Ketones and Carboxylic Acids","Amines","Biomolecules","Hydrocarbons","Organic Chemistry: Basic Principles","Chemical Equilibrium"],
+ Maths:["Sets, Relations and Functions","Trigonometric Functions","Complex Numbers","Quadratic Equations","Permutations and Combinations","Binomial Theorem","Sequences and Series","Straight Lines","Conic Sections","Limits and Derivatives","Continuity and Differentiability","Applications of Derivatives","Integrals","Applications of Integrals","Differential Equations","Matrices","Determinants","Vector Algebra","Three-Dimensional Geometry","Probability","Statistics","Mathematical Reasoning","Inverse Trigonometric Functions","Linear Programming"]
+};
+const LEVELS=["ROOKIE","SCOUT","GRINDER","SOLVER","CHALLENGER","STRATEGIST","ELITE","JEE WARRIOR","JEE TITAN","LEGEND"];
+const KEY="jeeQuestV1";
+const today=()=>new Date().toISOString().slice(0,10);
+const blank=()=>({xp:0,chapters:{Physics:DEFAULTS.Physics.map((name,i)=>({name,done:false,id:"p"+i})),Chemistry:DEFAULTS.Chemistry.map((name,i)=>({name,done:false,id:"c"+i})),Maths:DEFAULTS.Maths.map((name,i)=>({name,done:false,id:"m"+i}))},taskDays:{},streak:0,lastDoneDay:null,mocks:[],friends:[],logs:[],dailyMinutes:{},activeSubject:"Physics",taskOverrides:{}});
+let data;try{data=JSON.parse(localStorage.getItem(KEY))||blank()}catch(e){data=blank()}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.style.display="block";setTimeout(()=>el.style.display="none",2200)}
+function level(){return Math.floor(Math.max(0,data.xp)/250)}
+function levelName(){const n=level();return LEVELS[Math.min(n,LEVELS.length-1)]}
+function allChapters(){return Object.values(data.chapters).flat()}
+function chapterPct(){let all=allChapters();return all.length?Math.round(all.filter(c=>c.done).length/all.length*100):0}
+function tasksForToday(){
+ const key=today(); if(data.taskOverrides[key])return data.taskOverrides[key];
+ const done=allChapters().filter(c=>c.done).length;
+ const weak=weakestSubject();
+ return [
+ {id:"focus",title:"Complete 3 focused study sessions",detail:"Try 3 × 40 minutes, with short breaks.",xp:30},
+ {id:"practice",title:"Solve 20 JEE questions / PYQs",detail:"Check answers and mark mistakes.",xp:30},
+ {id:"revise",title:"Revise yesterday's concepts",detail:"Use active recall, not just rereading.",xp:20},
+ {id:"error",title:"Update your error notebook",detail:"Write why each mistake happened and the fix.",xp:20},
+ {id:"weak",title:"Target your next weak area: "+weak,detail:"Review a concept, then solve 5 focused questions.",xp:25},
+ {id:"plan",title:"Log study time and plan tomorrow",detail:"Finish with a 2-minute review.",xp:10}
+ ];
+}
+function dayState(){const k=today();if(!data.taskDays[k])data.taskDays[k]={};return data.taskDays[k]}
+function weakestSubject(){
+ const subjects=["Physics","Chemistry","Maths"];let scores=subjects.map(s=>{let a=data.chapters[s]||[];return {s,p:a.length?a.filter(x=>x.done).length/a.length:0}});
+ scores.sort((a,b)=>a.p-b.p);return scores[0]?.s||"Physics";
+}
+function totalDoneToday(){let t=tasksForToday(),d=dayState();return t.filter(x=>d[x.id]).length}
+function allTasksDone(){return totalDoneToday()===tasksForToday().length}
+function renderTasks(){
+ const tasks=tasksForToday(),d=dayState();document.getElementById("dateLabel").textContent=new Date().toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"})+" · "+tasks.length+" missions";
+ document.getElementById("tasks").innerHTML=tasks.map(t=>`<div class="task"><input type="checkbox" id="task_${esc(t.id)}" data-task="${esc(t.id)}" ${d[t.id]?"checked":""}><label for="task_${esc(t.id)}"><strong>${esc(t.title)}</strong><small>${esc(t.detail)}</small></label><span class="points">+${t.xp} XP</span></div>`).join("");
+ document.querySelectorAll("[data-task]").forEach(el=>el.addEventListener("change",()=>toggleTask(el.dataset.task,el.checked)));
+}
+function toggleTask(id,checked){const d=dayState();const t=tasksForToday().find(x=>x.id===id);if(!t)return;if(checked&&!d[id]){d[id]=true;data.xp+=t.xp;updateStreak();toast("Mission complete! +"+t.xp+" XP");}else if(!checked&&d[id]){d[id]=false;data.xp=Math.max(0,data.xp-t.xp)}save()}
+function updateStreak(){let k=today();if(data.lastDoneDay===k)return;let y=new Date(Date.now()-86400000).toISOString().slice(0,10);data.streak=data.lastDoneDay===y?data.streak+1:1;data.lastDoneDay=k}
+function renderChapters(){
+ const sub=data.activeSubject||"Physics";document.querySelectorAll("[data-sub]").forEach(b=>b.classList.toggle("active",b.dataset.sub===sub));
+ const arr=data.chapters[sub]||[];document.getElementById("chapters").innerHTML=arr.map((c,i)=>`<label class="chapter ${c.done?"done":""}"><input type="checkbox" data-chapter="${esc(c.id)}" ${c.done?"checked":""}><span>${esc(c.name)}</span></label>`).join("");
+ document.querySelectorAll("[data-chapter]").forEach(el=>el.addEventListener("change",()=>{let c=allChapters().find(x=>x.id===el.dataset.chapter);if(!c)return;if(el.checked&&!c.done){c.done=true;data.xp+=50;toast("Chapter milestone! +50 XP")}else if(!el.checked&&c.done){c.done=false;data.xp=Math.max(0,data.xp-50)}save()}));
+}
+function milestones(){
+ const ch=allChapters().filter(c=>c.done).length, q=data.logs.reduce((a,x)=>a+(x.questions||0),0), tasks=Object.values(data.taskDays).reduce((n,d)=>n+Object.values(d).filter(Boolean).length,0);
+ const list=[
+ ["🌱","First mission","Complete any 1 daily task",tasks>=1,"+1 mission"],
+ ["🔥","3-day consistency","Complete tasks on 3 different days",Object.values(data.taskDays).filter(d=>Object.values(d).some(Boolean)).length>=3,"Consistency badge"],
+ ["📘","5 chapters complete","Finish 5 chapters",ch>=5,"Chapter badge"],
+ ["🧠","10 chapters complete","Finish 10 chapters",ch>=10,"Deep-work badge"],
+ ["🎯","500 XP","Earn 500 XP",data.xp>=500,"Choose a small treat"],
+ ["🚀","Level 5","Reach Level 5",level()>=5,"Planned gaming break"],
+ ["📈","First mock","Record your first mock score",data.mocks.length>=1,"Review your mistakes"],
+ ["🏅","25 chapters","Finish 25 chapters",ch>=25,"Personal celebration"]
+ ];
+ document.getElementById("milestones").innerHTML=list.map(m=>`<div class="milestone"><div class="medal">${m[0]}</div><div><b>${m[1]}</b><small>${m[2]}</small></div><span class="status">${m[3]?"UNLOCKED":"LOCKED"}</span></div>`).join("");
+}
+function renderFriends(){
+ const friends=[{name:"You",xp:data.xp,self:true},...(data.friends||[])].sort((a,b)=>b.xp-a.xp);
+ document.getElementById("leaderboard").innerHTML=friends.length?friends.map((f,i)=>`<div class="friend"><div class="avatar">${i+1}</div><div class="name"><b>${esc(f.name)}${f.self?" (you)":""}</b><small>${i===0?"Top of this leaderboard":levelName()}</small></div><b>${f.xp} XP</b>${!f.self?`<button class="secondary small" data-remove="${esc(f.id)}">×</button>`:""}</div>`).join(""):'<div class="empty">Add a nickname to get started.</div>';
+ document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>{data.friends=data.friends.filter(f=>f.id!==b.dataset.remove);save()}));
+}
+function renderInsights(){
+ const el=document.getElementById("insights"),m=data.mocks||[];
+ let out=[];
+ if(m.length>=2){let a=m[m.length-2],b=m[m.length-1],delta=b.score-a.score;out.push(`<div class="insight">Latest score change: <strong>${delta>0?"+":""}${delta} marks</strong> (${esc(a.name)} → ${esc(b.name)}). ${delta>0?"Keep the method that worked.":delta<0?"Review errors and test conditions before changing your whole plan.":"Your score is stable; inspect topic-wise accuracy next."}</div>`)}
+ else if(m.length===1)out.push(`<div class="insight">First baseline saved: <strong>${m[0].score}/300</strong>. Record another comparable mock to see a trend.</div>`);
+ else out.push(`<div class="insight">No mock data yet. Save a practice-test score to start tracking your trend.</div>`);
+ const weak=weakestSubject();out.push(`<div class="insight">Current syllabus gap: <strong>${esc(weak)}</strong> has the lowest chapter completion percentage. Choose one unfinished chapter and do concept + practice.</div>`);
+ out.push(`<div class="insight">Syllabus checked off: <strong>${chapterPct()}%</strong>. A checked chapter means studied and practiced, not just watched a lecture.</div>`);
+ el.innerHTML=out.join("");
+ document.getElementById("mockHistory").innerHTML=m.slice(-4).reverse().map(x=>`<div class="subrow" style="margin-top:8px"><span>${esc(x.name)}</span><b>${x.score}/300</b></div>`).join("");
+}
+function renderStudy(){
+ const mins=data.dailyMinutes[today()]||0;document.getElementById("minutesCount").textContent=mins;
+ document.getElementById("studyHistory").innerHTML=(data.logs||[]).slice(-4).reverse().map(x=>`<div class="subrow" style="margin-top:7px"><span>${esc(x.subject)} · ${esc(x.date)}</span><b>${x.minutes} min</b></div>`).join("")||'<div class="empty">No study sessions logged yet.</div>';
+}
+function render(){
+ const lv=level(),within=data.xp%250;
+ document.getElementById("xpTotal").textContent=data.xp;
+ document.getElementById("levelName").textContent="LEVEL "+(lv+1)+" · "+levelName();
+ document.getElementById("greeting").textContent=lv>=5?"Your consistency is stacking up.":"Build your streak.";
+ document.getElementById("heroLine").textContent=lv>=5?"Keep improving accuracy, not just XP.":"Small wins today. Stronger preparation tomorrow.";
+ document.getElementById("levelBar").style.width=(within/250*100)+"%";
+ document.getElementById("xpProgress").textContent=within+" / 250 XP to next level";
+ document.getElementById("streakLabel").textContent="🔥 "+data.streak+"-day streak";
+ document.getElementById("doneCount").textContent=totalDoneToday()+"/"+tasksForToday().length;
+ document.getElementById("chapterCount").textContent=chapterPct()+"%";
+ renderTasks();renderChapters();milestones();renderFriends();renderInsights();renderStudy();
+}
+document.querySelectorAll("[data-sub]").forEach(b=>b.addEventListener("click",()=>{data.activeSubject=b.dataset.sub;save()}));
+document.getElementById("addChapter").addEventListener("click",()=>{let name=document.getElementById("newChapter").value.trim(),sub=document.getElementById("newSubject").value;if(!name)return;data.chapters[sub].push({name,done:false,id:"custom_"+Date.now()});document.getElementById("newChapter").value="";data.activeSubject=sub;save();toast("Chapter added")});
+document.getElementById("addFriend").addEventListener("click",()=>{let name=document.getElementById("friendName").value.trim(),xp=Math.max(0,Number(document.getElementById("friendXP").value)||0);if(!name)return;data.friends.push({id:"f"+Date.now(),name,xp});document.getElementById("friendName").value="";document.getElementById("friendXP").value="";save();toast("Friend added on this device")});
+document.getElementById("addMock").addEventListener("click",()=>{let name=document.getElementById("mockName").value.trim()||("Mock "+(data.mocks.length+1)),score=Number(document.getElementById("mockScore").value);if(!Number.isFinite(score)||score<0||score>300){toast("Enter a score from 0 to 300");return}data.mocks.push({name,score,date:today()});data.xp+=20;document.getElementById("mockName").value="";document.getElementById("mockScore").value="";save();toast("Mock saved · +20 XP")});
+document.getElementById("logMinutes").addEventListener("click",()=>{let minutes=Number(document.getElementById("minutesInput").value),subject=document.getElementById("studySubject").value;if(!Number.isFinite(minutes)||minutes<1||minutes>1000){toast("Enter minutes from 1 to 1000");return}data.dailyMinutes[today()]=(data.dailyMinutes[today()]||0)+minutes;data.logs.push({date:today(),minutes,subject});data.xp+=Math.floor(minutes/25)*5;document.getElementById("minutesInput").value="";save();toast("Study time logged")});
+document.getElementById("refreshTasks").addEventListener("click",()=>{delete data.taskOverrides[today()];save();toast("Daily plan refreshed")});
+document.getElementById("resetToday").addEventListener("click",()=>{if(confirm("Reset today's task checks and return their XP?")){let d=dayState();tasksForToday().forEach(t=>{if(d[t.id])data.xp=Math.max(0,data.xp-t.xp)});data.taskDays[today()]={};save()}});
+document.getElementById("exportBtn").addEventListener("click",()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="jee-quest-backup.json";a.click();URL.revokeObjectURL(a.href)});
+document.getElementById("importFile").addEventListener("change",async e=>{try{let file=e.target.files[0];if(!file)return;let incoming=JSON.parse(await file.text());if(!incoming.chapters||typeof incoming.xp!=="number")throw Error();data=incoming;save();toast("Backup restored")}catch(err){toast("That backup file is not valid")}e.target.value=""});
+document.getElementById("wipeBtn").addEventListener("click",()=>{if(confirm("Delete all JEE QUEST data from this browser? Export a backup first if needed.")){data=blank();save();toast("Data reset")}});
+let installPrompt=null;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;document.getElementById("installBtn").classList.remove("hidden")});
+document.getElementById("installBtn").addEventListener("click",async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;document.getElementById("installBtn").classList.add("hidden")}else toast("Use Chrome menu → Add to Home screen")});
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+render();
+</script>
+</body></html>
